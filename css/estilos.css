@@ -1,0 +1,5 @@
+/*cuando reproduce el audio no muestra el iframe, para no llenar la pantalla de iframe*/
+iframe
+{
+	display:none;
+}
