@@ -285,7 +285,7 @@ function clickActivarJuego() {
 
 /*Se utiliza para sacar los meteoritos*/
 function spawnCandy() {
-	var arregloMeteorito = [
+	var arregloGlobos = [
 		'meteorito1',
 		'meteorito2',
 		'meteorito3',
@@ -300,7 +300,7 @@ function spawnCandy() {
 	var dropPos = Math.round(Math.random() * (800 - 100) + 100);
 	var dropX = Math.round(Math.random() * (500 - 0) + 0);
 	var candyType = Math.floor(Math.random() * 5);
-	newAsterio = game.add.sprite(0, dropPos, arregloMeteorito[this.numeroAleatorio3(10)]);
+	newAsterio = game.add.sprite(0, dropPos, arregloGlobos[this.numeroAleatorio3(10)]);
 
 	game.physics.enable(newAsterio, Phaser.Physics.ARCADE);
 	newAsterio.body.velocity.set(230, 0);
@@ -332,7 +332,7 @@ function clickActivarJuego2() {
 }
 
 function spawnCandy2() {
-	var arregloMeteorito = [
+	var arregloGlobos = [
 		'meteorito1',
 		'meteorito2',
 		'meteorito3',
@@ -347,7 +347,7 @@ function spawnCandy2() {
 	var dropPos = Math.round(Math.random() * (800 - 0) + 0);
 	var dropX = Math.round(Math.random() * (500 - 0) + 0);
 	var candyType = Math.floor(Math.random() * 5);
-	newAsterio2 = game.add.sprite(0, dropPos, arregloMeteorito[this.numeroAleatorio3(10)]);
+	newAsterio2 = game.add.sprite(0, dropPos, arregloGlobos[this.numeroAleatorio3(10)]);
 
 	game.physics.enable(newAsterio2, Phaser.Physics.ARCADE);
 	newAsterio2.body.velocity.set(250, 0);
@@ -355,10 +355,11 @@ function spawnCandy2() {
 	group2.add(newAsterio2);
 }
 
+/*Metodo Handler, funcion utilizada en el juego del payaso*/
 function processHandler(player, veg) {
 	return true;
 }
-
+/*Metodo colicion, funcion utilizada en el juego del payaso, nivel 1*/
 function collisionHandler(player, veg) {
 	explotarFX.play();
 	contadorNiveles = 0;
@@ -397,6 +398,11 @@ function collisionHandler(player, veg) {
 	setTimeout(clicActivar, 1000);
 }
 
+function clickPlay() {
+	cancelaUpdate = false;
+	game.paused = false;
+}
+
 function clicActivar() {
 	group = game.add.group();
 	group2 = game.add.group();
@@ -407,6 +413,10 @@ function clicActivar() {
 }
 
 /*Se coloca*/
+
+function clickPausa() {
+	game.paused = true;
+}
 
 function lanzaEstrella() {
 	desactivadorUpdate = true;
